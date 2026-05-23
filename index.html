@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kidney Tumor Detection in CT Scans</title>
+    <meta
+      name="description"
+      content="A mini project website for automated kidney CT image classification using transfer learning with ResNet18."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Project home">
+        <span class="brand-mark">KT</span>
+        <span>Kidney CT Classifier</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Evaluation</a>
+        <a href="#team">Team</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Mini Project Batch No. 13</p>
+          <h1>Kidney Tumor Detection in CT Scans Using 2D CNN and Transformer Networks</h1>
+          <p class="hero-text">
+            An automated medical image classification system using deep feature extraction and
+            transfer learning to identify Cyst, Normal, Stone, and Tumor kidney CT images.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#method">View Methodology</a>
+            <a class="button secondary" href="#team">Project Team</a>
+          </div>
+        </div>
+        <div class="scan-stage" aria-label="Animated kidney CT analysis preview">
+          <div class="scan-card">
+            <div class="scan-toolbar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="scan-visual">
+              <div class="kidney left"></div>
+              <div class="kidney right"></div>
+              <div class="focus-ring"></div>
+              <div class="scan-line"></div>
+            </div>
+            <div class="prediction-panel">
+              <div>
+                <span class="label">Prediction</span>
+                <strong>Tumor / Stone / Cyst / Normal</strong>
+              </div>
+              <span class="confidence">AI Assisted</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Project Overview</p>
+          <h2>Fast, consistent support for CT kidney diagnosis</h2>
+        </div>
+        <div class="overview-grid">
+          <article>
+            <h3>Problem</h3>
+            <p>
+              Manual CT scan interpretation is time-consuming and can vary between observers.
+              Earlier CAD systems often depend on handcrafted features and struggle with complex
+              multi-class medical image patterns.
+            </p>
+          </article>
+          <article>
+            <h3>Proposed Solution</h3>
+            <p>
+              The system fine-tunes a pretrained ResNet18 convolutional neural network on the CT
+              Kidney Dataset from Kaggle to classify images into four clinically relevant groups.
+            </p>
+          </article>
+          <article>
+            <h3>Impact</h3>
+            <p>
+              The classifier can help healthcare professionals screen kidney CT images more
+              efficiently while reducing delay in early disease identification.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="stats-band" aria-label="Project highlights">
+        <div>
+          <strong>12,446</strong>
+          <span>CT images</span>
+        </div>
+        <div>
+          <strong>4</strong>
+          <span>classes</span>
+        </div>
+        <div>
+          <strong>80 / 20</strong>
+          <span>train-validation split</span>
+        </div>
+        <div>
+          <strong>ResNet18</strong>
+          <span>transfer learning model</span>
+        </div>
+      </section>
+
+      <section id="method" class="section method-section">
+        <div class="section-heading">
+          <p class="eyebrow">Methodology</p>
+          <h2>From CT image to disease class</h2>
+        </div>
+        <div class="timeline">
+          <div class="step">
+            <span>01</span>
+            <h3>Dataset Collection</h3>
+            <p>CT Kidney Dataset with Cyst, Normal, Stone, and Tumor image categories.</p>
+          </div>
+          <div class="step">
+            <span>02</span>
+            <h3>Preprocessing</h3>
+            <p>Images are resized and normalized before being passed into the model.</p>
+          </div>
+          <div class="step">
+            <span>03</span>
+            <h3>Augmentation</h3>
+            <p>Random horizontal flipping and rotation improve robustness and reduce overfitting.</p>
+          </div>
+          <div class="step">
+            <span>04</span>
+            <h3>Model Training</h3>
+            <p>ResNet18 is fine-tuned using Adam optimizer and cross-entropy loss for five epochs.</p>
+          </div>
+          <div class="step">
+            <span>05</span>
+            <h3>Evaluation</h3>
+            <p>Accuracy, confusion matrix, precision, recall, and F1-score are used for validation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section evaluation-section">
+        <div class="section-heading">
+          <p class="eyebrow">Evaluation</p>
+          <h2>Model performance indicators</h2>
+        </div>
+        <div class="evaluation-layout">
+          <div class="upload-panel">
+            <label class="upload-box" for="scanUpload">
+              <input id="scanUpload" type="file" accept="image/*" />
+              <span>Upload CT / X-ray Image</span>
+              <small>PNG, JPG, or JPEG</small>
+            </label>
+            <div class="preview-box">
+              <img id="scanPreview" alt="Uploaded scan preview" />
+              <p id="emptyPreview">Image preview will appear here</p>
+            </div>
+            <button class="button primary evaluate-button" id="evaluateButton" type="button">
+              Evaluate Image
+            </button>
+            <p class="demo-note">
+              Demo interface for project presentation. Final diagnosis should be made by medical
+              professionals using the trained model output.
+            </p>
+          </div>
+          <div class="metric-list">
+            <article class="prediction-result">
+              <h3>Prediction Result</h3>
+              <strong id="predictionClass">Waiting for image</strong>
+              <div class="confidence-bar" aria-label="Prediction confidence">
+                <span id="confidenceFill"></span>
+              </div>
+              <p id="predictionText">Upload a kidney CT or X-ray image and click evaluate.</p>
+            </article>
+            <article>
+              <h3>Accuracy</h3>
+              <p>Measures the overall percentage of correctly classified validation images.</p>
+            </article>
+            <article>
+              <h3>Precision</h3>
+              <p>Shows how reliable the predicted class labels are for each kidney condition.</p>
+            </article>
+            <article>
+              <h3>Recall</h3>
+              <p>Measures how well the model identifies all samples belonging to each class.</p>
+            </article>
+            <article>
+              <h3>F1-Score</h3>
+              <p>Balances precision and recall to compare class-wise performance fairly.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section requirements-section">
+        <div class="section-heading">
+          <p class="eyebrow">Requirements</p>
+          <h2>System requirement specifications</h2>
+        </div>
+        <div class="requirements-grid">
+          <article>
+            <h3>Software</h3>
+            <p>Python 3.10+, PyTorch, Torchvision, Scikit-learn, NumPy, Matplotlib, Pillow, VS Code.</p>
+          </article>
+          <article>
+            <h3>Hardware</h3>
+            <p>Intel Core i5 or above, minimum 8 GB RAM, 10 GB free disk space, optional CUDA GPU.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="team" class="section team-section">
+        <div class="section-heading">
+          <p class="eyebrow">Matrusri Engineering College</p>
+          <h2>Project team</h2>
+        </div>
+        <div class="team-grid">
+          <article>
+            <span>1608-23-733-087</span>
+            <h3>Marri Nishita</h3>
+          </article>
+          <article>
+            <span>1608-23-733-085</span>
+            <h3>Ayyagari Umasree</h3>
+          </article>
+          <article>
+            <span>1608-23-733-066</span>
+            <h3>Koulampet Rishikesh Chary</h3>
+          </article>
+        </div>
+        <p class="guide">Guide: Mrs. P. Sushma, Assistant Professor</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Department of Computer Science and Engineering, Matrusri Engineering College</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
